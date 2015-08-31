@@ -19,8 +19,9 @@ using namespace std;
 
 int main(int argc, const char * argv[]) {
     // insert code here...
-    string teststr = "PAYPALISHIRING";
-    int testint = 3;
+    //string teststr = "PAYPALISHIRING";
+    string teststr = "ABC";
+    int testint = 2;
     
     //zigzagoutput(teststr, testint);
     

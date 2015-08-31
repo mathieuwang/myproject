@@ -14,25 +14,29 @@ using namespace std;
 class Solution {
 public:
     string convert(string s, int numRows) {
-        string res;
+        string res = "";
         int ssize = (int) s.size();
+        if (ssize <= numRows || numRows == 1) {
+            return s;
+        }
         vector<string> outputs(numRows);
         int period = numRows * 2 - 2;
         int pcount = ssize / period;
         
         int pos = 0;
-        for (int k = 0; k <= pcount && pos < ssize; ++ k) {
+        for (int k = 0; k <= pcount; ++ k) {
             int i = 0;
-            for (; i < numRows; ++ i, ++ pos) {
+            for (; i < numRows && pos < ssize; ++ i, ++ pos) {
                 outputs[i].push_back(s[pos]);
             }
-            for (; i < period; ++ i, ++ pos) {
+            for (; i < period && pos < ssize; ++ i, ++ pos) {
                 outputs[period - i].push_back(s[pos]);
             }
         }
         
         for (int k = 0; k < numRows; ++ k) {
-            for (int i = 0; i < outputs[k].size(); i ++) {
+            int currsize = (int) outputs[k].size();
+            for (int i = 0; i < currsize; i ++) {
                 res.push_back(outputs[k][i]);
             }
         }
