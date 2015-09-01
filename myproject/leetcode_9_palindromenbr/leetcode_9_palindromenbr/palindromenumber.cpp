@@ -20,10 +20,28 @@ public:
         if (x % 10 == 0) {
             return false;
         }
-        int lastdigit = x % 10;
+        int digitcount = 1;
+        int tmp = x;
         
-        while (x > lastdigit) {
-            
+        int max = 1;
+        int min = 1;
+        
+        while (tmp > 9) {
+            ++ digitcount;
+            tmp = tmp / 10;
+            max = max * 10;
         }
+        
+        int i = 0, j = 0;
+        for (; i < digitcount / 2; ++ i) {
+            j = digitcount - i;
+            if ((x / max) % 10 != (x / min) % 10) {
+                return false;
+            }
+            max /= 10;
+            min *= 10;
+        }
+        
+        return true;
     }
 };
